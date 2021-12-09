@@ -43,7 +43,7 @@ export const Section = styled.section`
   align-items: center;
   justify-content: end;
   width: 80px;
-  height: 350px;
+  height: 400px;
   position: fixed;
   bottom: 0;
   right: 0;
@@ -52,6 +52,8 @@ export const Section = styled.section`
   svg {
     font-size: 70px;
     cursor: pointer;
+
+    fill: #fff;
   }
 
   p {
@@ -69,9 +71,33 @@ export const Section = styled.section`
     display: flex;
     justify-content: center;
     transition: 0.3s;
+    animation-duration: 0.7s;
+    animation-name: slidein;
+
+    @keyframes slidein {
+      0% {
+        margin-bottom: -50px;
+      }
+      50% {
+        margin-bottom: 13px;
+      }
+      100% {
+        margin-bottom: 8px;
+      }
+    }
 
     :hover {
       transform: scale(1.08);
     }
+  }
+
+  @media (min-width: 768px) {
+    bottom: 30px;
+    right: 50px;
+  }
+
+  @media (min-width: 1440px) {
+    bottom: 50px;
+    right: 90px;
   }
 `;

@@ -8,6 +8,12 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [ user, userState ] = useState({});
 
+    const userRegister = (datas) => {
+        api.post("/users/", datas)
+            .then(response => {})
+            .catch(error => {});
+    }
+
     const userLogin = (datas) => {
         api.post("/sessions/", datas)
             .then(response => {

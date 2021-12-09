@@ -3,6 +3,7 @@ import { Button, Container, Form, Input } from "./styles";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import LoginImg from "../../assets/login.png";
 
 const Login = () => {
   const { userLogin } = useUser();
@@ -22,6 +23,7 @@ const Login = () => {
 
   return (
     <Container>
+      <img src={LoginImg} alt="menina com livro" />
       <Form onSubmit={handleSubmit(userLogin)}>
         <h1>Login</h1>
         <Input {...register("username")} type="text" placeholder="Usuário" />

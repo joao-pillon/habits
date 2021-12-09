@@ -1,4 +1,4 @@
-import { Switch, Route  } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import Login from "../pages/Login";
 import Cadastro from "../pages/Cadastro";
@@ -6,9 +6,13 @@ import Home from "../pages/Home";
 import Dashboard from "../pages/Dashboard";
 
 const Routes = () => {
-  return(
+  return (
     <Switch>
-      <Route exact path="/" component={ Dashboard }/>
+      <Route exact path="/" component={Dashboard} />
+
+      <Route path="/login">
+        <Login />
+      </Route>
     </Switch>
   );
 };

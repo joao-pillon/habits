@@ -1,7 +1,6 @@
 import Routes from "./routes";
 import { Toaster } from "react-hot-toast";
 
-import { useUser } from "./providers/user";
 
 const App = () => {
   return (

@@ -8,7 +8,7 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [ user, userState ] = useState({});
 
-    function userLogin(datas){
+    const userLogin = (datas) => {
         api.post("/sessions/", datas)
             .then(response => {
                 localStorage.setItem("@userToken", response.data.access);
@@ -18,12 +18,13 @@ export const UserProvider = ({ children }) => {
             });
     }
 
-    function getUser(){
+    const getUser = () => {
         const token = localStorage.getItem("@userToken");
         if(token){
             const decode_token = jwt_decode(token);
             api.get(`/users/${ decode_token.user_id }/`)
                 .then(response => {
+                    console.log(response.data)
                     userState(response.data);
                 })
                 .catch(error => {

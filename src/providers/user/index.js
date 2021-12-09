@@ -9,7 +9,6 @@ export const UserProvider = ({ children }) => {
   const [user, userState] = useState({});
 
   const userLogin = (datas) => {
-    console.log(datas);
     api
       .post("/sessions/", datas)
       .then((response) => {

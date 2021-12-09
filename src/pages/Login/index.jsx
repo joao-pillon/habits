@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const Login = ({}) => {
+const Login = () => {
   const { userLogin } = useUser();
 
   const schema = yup.object().shape({

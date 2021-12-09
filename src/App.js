@@ -1,12 +1,12 @@
-import "./App.css";
 import Routes from "./routes";
 import { Toaster } from "react-hot-toast";
+
+import { useUser } from "./providers/user";
 
 const App = () => {
   return (
     <div className="App">
       <Routes />
-      <GlobalStyles></GlobalStyles>{" "}
       <Toaster position="top-center" reverseOrder={false} />
     </div>
   );

@@ -1,10 +1,10 @@
 import { Switch, Route  } from "react-router-dom";
 import { useState } from "react";
 
-import Login from "../components/Login";
-import Cadastro from "../components/Cadastro";
-import Home from "../components/Home";
-import Dashboard from "../components/Dashboard";
+import Login from "../pages/Login";
+import Cadastro from "../pages/Cadastro";
+import Home from "../pages/Home";
+import Dashboard from "../pages/Dashboard";
 
 const Routes = () => {
 

@@ -1,7 +1,6 @@
 import Routes from "./routes";
 import { Toaster } from "react-hot-toast";
 
-import { useUser } from "./providers/user";
 import GlobalStyle from "./styles/global";
 
 const App = () => {
@@ -12,7 +11,7 @@ const App = () => {
       <GlobalStyle />
       <Toaster position="top-center" reverseOrder={false} 
         toastOptions={ {
-          duration: 1500
+          duration: 2000
         } }/>
     </div>
   );

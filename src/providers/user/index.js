@@ -66,18 +66,25 @@ export const UserProvider = ({ children }) => {
         if(token){
             toast.loading("Espere...");
             const decode_token = jwt_decode(token);
-            api.put(`/users/${ decode_token.user_id }`, datas, {
-                headers:{ Authorization: `Bearer ${token}` }
+
+            api.patch(`/users/${ decode_token.user_id }/`, datas, {
+                headers: {
+                    Authorization:`Bearer ${ token }`
+                }
             })
                 .then(response => {
                     userState(response.data);
+                    toast.remove();
+                    toast.success("Dados atualizados");
+                    history.push("/");
                 })
                 .catch(error => {
+                    toast.remove();
                     if(error.response.data.message){
                         toast.error("Você não tem permissão para editar esse usuário");
                     }
                     else if(error.response.data.username){
-                        toast.error("Esse usuário não existe");
+                        toast.error("Esse usuário já existe");
                     }
                     else{
                         toast.error("Erro, tente novamente mais tarde");
@@ -100,15 +107,18 @@ export const UserProvider = ({ children }) => {
                     userState(response.data);
                 })
                 .catch(() => {
-                    toast.error("Erro, tente novamente mais tarde");
                     localStorage.removeItem("@userToken");
                     userState(null);
                 });
         }
+        else{
+            localStorage.removeItem("@userToken");
+            userState(null);
+            history.push("/login");
+        }
     }
 
     const getUsers = (page) => {
-
         api.get(`/users/${ (page)? `?page=${page}`: "" }`)
             .then(response => {
                 usersState(response.data.results);

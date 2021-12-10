@@ -111,11 +111,16 @@ export const UserProvider = ({ children }) => {
                     userState(null);
                 });
         }
-        else{
-            localStorage.removeItem("@userToken");
-            userState(null);
-            history.push("/login");
-        }
+    }
+
+    const getUserId = (id) => {
+        api.get(`/users/${ id }/`)
+            .then(response => {
+                userState(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
 
     const getUsers = (page) => {
@@ -130,7 +135,7 @@ export const UserProvider = ({ children }) => {
 
     return(
         <UserContext.Provider value={ { user, users, userLogin, userRegister, 
-                                        userUpdate, getUser, getUsers } }>
+                                        userUpdate, getUser, getUsers, getUserId } }>
             { children }
         </UserContext.Provider>
     );

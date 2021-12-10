@@ -83,6 +83,9 @@ export const UserProvider = ({ children }) => {
                 toast.remove();
                 if(error.response.data.message){
                     toast.error("Você não tem permissão para editar esse usuário");
+                    localStorage.removeItem("@userToken");
+                    userState(null);
+                    history.push("/login");
                 }
                 else if(error.response.data.username){
                     toast.error("Esse usuário já existe");
@@ -90,11 +93,12 @@ export const UserProvider = ({ children }) => {
                 else{
                     toast.error("Erro, tente novamente mais tarde");
                 }
-                
-                localStorage.removeItem("@userToken");
-                userState(null);
-                history.push("/login");
             });
+        }
+        else{
+            toast.arguments("Faça login para continuar");
+            userState(null)
+            history.push("/login");
         }
     };
 
@@ -109,8 +113,14 @@ export const UserProvider = ({ children }) => {
             })
             .catch(() => {
                 localStorage.removeItem("@userToken");
+                toast.arguments("Faça login para continuar");
                 userState(null);
             });
+        }
+        else{
+            toast.arguments("Faça login para continuar");
+            userState(null)
+            history.push("/login");
         }
     };
 
@@ -135,8 +145,8 @@ export const UserProvider = ({ children }) => {
     };
 
     return(
-        <UserContext.Provider value={ { user, users, userLogin, userRegister, 
-                                        userUpdate, getUser, getUsers, getUserId } }>
+        <UserContext.Provider value={ { user, users, userLogin, userRegister, userUpdate
+            , getUser, getUsers, getUserId } }>
             { children }
         </UserContext.Provider>
     );

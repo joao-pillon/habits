@@ -10,7 +10,6 @@ const HabitsContext = createContext();
 
 export const HabitsProviders = ({ children }) => {
     const [ habits, habitsState ] = useState([]);
-
     const history = useHistory();
 
     const habitsRegister = (datas) => {

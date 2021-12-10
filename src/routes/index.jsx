@@ -8,8 +8,10 @@ import Dashboard from "../pages/Dashboard";
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Dashboard} />
-
+      {/* <Route exact path="/" component={Home} /> */}
+      <Route exact path="/">
+        <Home />
+      </Route>
       <Route path="/login">
         <Login />
       </Route>

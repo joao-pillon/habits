@@ -9,7 +9,7 @@ import api from "../../services/api";
 const HabitsContext = createContext();
 
 export const HabitsProviders = ({ children }) => {
-    const [ habits, habitsState ] = useState([]);
+    const [ habits, setHabits ] = useState([]);
     const history = useHistory();
 
     const habitsRegister = (datas) => {
@@ -25,7 +25,7 @@ export const HabitsProviders = ({ children }) => {
                 }
             })
             .then(response => {
-                habitsState([ ...habits, response.data ]);
+                setHabits([ ...habits, response.data ]);
                 toast.remove();
                 toast.success("Habito Cadastrado");
             })
@@ -34,7 +34,7 @@ export const HabitsProviders = ({ children }) => {
                 if(error.response.data.message){
                     toast.error("Você não tem permissão para editar esse usuário");
                     localStorage.removeItem("@userToken");
-                    habitsState([]);
+                    setHabits([]);
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -43,7 +43,7 @@ export const HabitsProviders = ({ children }) => {
         }
         else {
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
     };
@@ -60,7 +60,7 @@ export const HabitsProviders = ({ children }) => {
                 }
             })
             .then(response => {
-                habitsState([ ...habits.map(habit => {
+                setHabits([ ...habits.map(habit => {
                     if(response.data.id === habit.id){
                         return response.data;
                     }
@@ -74,7 +74,7 @@ export const HabitsProviders = ({ children }) => {
                 if(error.response.data.message){
                     toast.error("Você não tem permissão para editar esse usuário");
                     localStorage.removeItem("@userToken");
-                    habitsState([]);
+                    setHabits([]);
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -83,7 +83,7 @@ export const HabitsProviders = ({ children }) => {
         }
         else{
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
     }
@@ -102,7 +102,7 @@ export const HabitsProviders = ({ children }) => {
             .then(() => {
                 toast.remove();
                 toast.success("Habito deletado");
-                habitsState(habits.filter(habit => habit.id !== id));
+                setHabits(habits.filter(habit => habit.id !== id));
             })
             .catch(error => {
                 toast.remove();
@@ -113,7 +113,7 @@ export const HabitsProviders = ({ children }) => {
                 else if(error.response.data.message){
                     toast.error("Você não tem permissão para editar esse usuário");
                     localStorage.removeItem("@userToken");
-                    habitsState([]);
+                    setHabits([]);
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -122,7 +122,7 @@ export const HabitsProviders = ({ children }) => {
         }
         else{
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
     }
@@ -137,7 +137,7 @@ export const HabitsProviders = ({ children }) => {
                 }
             })
             .then(response => {
-                habitsState(response.data);
+                setHabits(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -145,7 +145,7 @@ export const HabitsProviders = ({ children }) => {
         }
         else{
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
     };

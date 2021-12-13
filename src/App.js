@@ -6,8 +6,8 @@ const App = () => {
   return (
     <div className="App">
       <Routes />
-      <GlobalStyle />
       <Toaster position="top-center" reverseOrder={false} />
+      <GlobalStyle />
     </div>
   );
 };

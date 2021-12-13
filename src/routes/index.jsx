@@ -12,6 +12,7 @@ const Routes = () => {
 
   return (
     <Switch>
+      <Route exact path="/" component={Dashboard} />
       <Route path="/dashboard">
         <Dashboard />
       </Route>

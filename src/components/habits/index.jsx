@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
-import { useUser } from "../../providers/user";
-import api from "../../services/api";
+import { useHabits } from "../../providers/habits";
+import Update from "../buttonHabit";
 
 const HabitsCard = () => {
-  const [habits, setHabits] = useState([]);
-  const { getUser } = useUser;
-  const token = getUser;
+  const [habit, setHabit] = useState([]);
+
+  const { getHabits, habits } = useHabits;
+
   useEffect(() => {
-    api
-      .get("/habits/personal/", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        setHabits(response);
-      })
-      .catch((error) => console.log(error));
-  });
+    getHabits();
+    setHabit(habits);
+  }, [getHabits, habits]);
   return (
     <div>
-      {habits.map((hab, index) => {
+      {habit.map((hab, index) => {
         return (
-          <div>
-            <p>titulo:{hab.title}</p>
-            <p>categoria:{hab.category}</p>
-            <p>frequencia:{hab.frequency}</p>
-            <p>progresso:{hab.how_much_achieved}</p>
+          <div key={index}>
+            <p>Título:{hab.title}</p>
+            <p>Gênero:{hab.category}</p>
+            <p>Frequencia:{hab.frequency}</p>
+            <button onClick={() => Update(hab.how_much_achieved, "sub")}>
+              -
+            </button>
+            <p>Pagina:{hab.how_much_achieved}</p>
+            <button onClick={() => Update(hab.how_much_achieved, "add")}>
+              +
+            </button>
+            <button>Livro</button>
           </div>
         );
       })}

@@ -8,7 +8,7 @@ import api from "../../services/api";
 
 const HabitsContext = createContext();
 
-export const HabitsProviders = ({ children }) => {
+export const HabitsProvider = ({ children }) => {
     const [ habits, setHabits ] = useState([]);
     const history = useHistory();
 

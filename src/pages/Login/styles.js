@@ -1,5 +1,15 @@
 import styled, { keyframes } from "styled-components";
 
+const appearFrom = keyframes`
+from{
+    opacity:0;
+    
+}
+to {
+    opacity: 1;
+    
+}
+`;
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -11,6 +21,7 @@ export const Container = styled.div`
 
   img {
     display: none;
+    animation: ${appearFrom} 2s;
   }
 
   @media (min-width: 1024px) {
@@ -39,7 +50,7 @@ export const Form = styled.form`
   border-radius: 8px;
   background-color: #ffb703;
   width: 300px;
-  height: 300px;
+  height: 350px;
   animation: ${appearFromLeft} 1s;
 
   h1 {
@@ -47,6 +58,27 @@ export const Form = styled.form`
     color: white;
     font-size: 45px;
     text-shadow: 3px 2px 2px #474747, 25px 0px 2px rgba(206, 89, 55, 0);
+  }
+
+  span {
+    color: red;
+    font-size: 12px;
+    margin-top: -8px;
+    text-align: left;
+    width: 240px;
+  }
+
+  p {
+    font-size: 15px;
+    color: white;
+    font-weight: 600;
+    text-shadow: 2px 1px 2px #474747, 25px 0px 2px rgba(206, 89, 55, 0);
+    margin: 10px 0 0 0;
+    a {
+      text-decoration: none;
+      color: #219ebc;
+      text-shadow: 1px 2px 3px #ffffff;
+    }
   }
 `;
 
@@ -73,7 +105,7 @@ export const Button = styled.button`
   cursor: pointer;
   width: 240px;
   height: 40px;
-  margin: 10px 0;
+  margin: 20px 0;
   border-radius: 5px;
   border: 1px solid #126782;
   background-color: #126782;

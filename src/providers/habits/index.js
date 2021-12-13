@@ -32,7 +32,7 @@ export const HabitsProvider = ({ children }) => {
             .catch(error => {
                 toast.remove();
                 if(error.response.data.message){
-                    toast.error("Você não tem permissão para editar esse usuário");
+                    toast.error("Você não tem permissão para cadastrar nesse usuário");
                     localStorage.removeItem("@userToken");
                     setHabits([]);
                 }
@@ -72,7 +72,7 @@ export const HabitsProvider = ({ children }) => {
             .catch(error => {
                 toast.remove();
                 if(error.response.data.message){
-                    toast.error("Você não tem permissão para editar esse usuário");
+                    toast.error("Você não tem permissão para editar esse habito");
                     localStorage.removeItem("@userToken");
                     setHabits([]);
                 }
@@ -111,7 +111,7 @@ export const HabitsProvider = ({ children }) => {
                     toast.error("Habito não encontrado");
                 }
                 else if(error.response.data.message){
-                    toast.error("Você não tem permissão para editar esse usuário");
+                    toast.error("Você não tem permissão para deletar esse hábito");
                     localStorage.removeItem("@userToken");
                     setHabits([]);
                 }
@@ -140,6 +140,7 @@ export const HabitsProvider = ({ children }) => {
                 setHabits(response.data);
             })
             .catch(error => {
+                toast.arguments("Faça login para continuar");
                 console.log(error);
             });
         }

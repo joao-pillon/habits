@@ -89,7 +89,7 @@ export const UserProvider = ({ children }) => {
                     history.push("/login");
                 }
                 else if(error.response.data.username){
-                    toast.error("Esse usuário já existe");
+                    toast.error("Esse username já existe");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");

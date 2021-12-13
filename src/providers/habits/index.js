@@ -96,8 +96,6 @@ export const HabitsProvider = ({ children }) => {
         const token = localStorage.getItem("@userToken");
 
         if(token){
-            toast.loading("Espere...");
-
             api.delete(`/habits/${ id }/`, {
                 headers: {
                     Authorization:`Bearer ${ token }`

@@ -1,5 +1,16 @@
 import styled, { keyframes } from "styled-components";
 
+const appearFrom = keyframes`
+from{
+    opacity:0;
+    
+}
+to {
+    opacity: 1;
+    
+}
+`;
+
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -11,6 +22,7 @@ export const Container = styled.div`
 
   img {
     display: none;
+    animation: ${appearFrom} 2s;
   }
 
   @media (min-width: 1024px) {

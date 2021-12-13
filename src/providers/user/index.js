@@ -145,7 +145,7 @@ export const UserProvider = ({ children }) => {
         });
     };
 
-    const nextPage = () => {
+    const nextUsers = () => {
         api.get(`/users/?page=${ page + 1 }`)
         .then(response => {
             setUsers(response.data.results);
@@ -159,9 +159,9 @@ export const UserProvider = ({ children }) => {
                 console.log(error);
             }
         });
-    }
+    };
 
-    const previousPage = () => {
+    const previousUsers = () => {
         api.get(`/users/?page=${ page - 1 }`)
         .then(response => {
             setUsers(response.data.results);
@@ -175,11 +175,11 @@ export const UserProvider = ({ children }) => {
                 console.log(error);
             }
         });
-    }
+    };
 
     return(
         <UserContext.Provider value={ { user, users, userLogin, userRegister, userUpdate
-            , getUser, getUsers, getUserId, nextPage, previousPage } }>
+            , getUser, getUsers, getUserId, nextPage: nextUsers, previousPage: previousUsers } }>
             { children }
         </UserContext.Provider>
     );

@@ -21,8 +21,8 @@ export const UserProvider = ({ children }) => {
         api.post("/users/", datas)
         .then(() => {
             toast.remove();
-            toast.success("Usuário Cadastrado");
             history.push("/login");
+            toast.success("Usuário Cadastrado");
         })
         .catch(error => {
             toast.remove();
@@ -116,6 +116,7 @@ export const UserProvider = ({ children }) => {
                 localStorage.removeItem("@userToken");
                 toast.arguments("Faça login para continuar");
                 setUser(null);
+                history.push("/login");
             });
         }
         else{

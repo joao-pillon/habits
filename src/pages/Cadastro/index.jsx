@@ -1,15 +1,17 @@
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useHistory } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 import * as yup from "yup";
-import api from "../../services/api";
+
 import { Button, Container, Form, Input } from "./styles";
 import CadastroImg from "../../assets/cadastro.png";
+import { useUser } from "../../providers/user";
 
 // passar prop setUser
 
 const Cadastro = ({ setUser }) => {
+  const { userRegister } = useUser();
+
   const formSchema = yup.object().shape({
     username: yup
       .string()
@@ -29,31 +31,13 @@ const Cadastro = ({ setUser }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
+    formState: { errors }
   } = useForm({
     resolver: yupResolver(formSchema),
   });
 
-  const history = useHistory();
-
   const onSubmit = (data) => {
-    const request = {
-      username: `${data.username}`,
-      password: `${data.password}`,
-      email: `${data.email}`,
-    };
-    api
-      .post("/users/", request)
-      .then((response) => {
-        toast.success("Usuário cadastrado com sucesso");
-        reset();
-        setUser(response.data);
-        history.push("/login");
-      })
-      .catch((err) => {
-        toast.error("Tente novamente");
-      });
+    userRegister(data);
   };
 
   return (

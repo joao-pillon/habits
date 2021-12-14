@@ -94,7 +94,7 @@ export const GroupsProvider = ({ children }) => {
         const token = localStorage.getItem("@userToken");
 
         if(token){
-            api.post(`/groups/${ id }/subscribe/`, {
+            api.post(`/groups/${ id }/subscribe/`, id, {
                 headers: {
                     Authorization:`Bearer ${ token }`
                 }

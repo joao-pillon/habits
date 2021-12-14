@@ -5,22 +5,22 @@ import toast from "react-hot-toast";
 import api from "../../services/api";
 
 
-const GoalsContext = createContext();
+const ActivitiesContext = createContext();
 
-export const GoalsProvider = ({ children }) => {
+export const ActivitiesProvider = ({ children }) => {
     const history = useHistory();
 
-    const GoalRegister = (data) => {
+    const ActivitieRegister = (data) => {
         const token = localStorage.getItem("@userToken");
 
-        if(token){
-            api.post("/goals/", data, {
+        if(token) {
+            api.post("/activities/", data, {
                 headers: {
                     Authorization:`Bearer ${ token }`
                 }
             })
             .then(() => {
-                toast.success("Meta cadastrada");
+                toast.success("Atividades cadastrada");
             })
             .catch(error => {
                 if(error.response.data.code){
@@ -42,17 +42,17 @@ export const GoalsProvider = ({ children }) => {
         }
     };
 
-    const GoalUpdate = (data) => {
+    const ActivitieUpdate = (data) => {
         const token = localStorage.getItem("@userToken");
 
         if(token){
-            api.patch(`/goals/${ data.id }/`, data, {
+            api.patch(`/activities/${ data.id }/`, data, {
                 headers: {
                     Authorization:`Bearer ${ token }`
                 }
             })
             .then(() => {
-                toast.success("Meta atualizada");
+                toast.success("Atividade atualizada");
             })
             .catch(error => {
                 if(error.response.data.code){
@@ -61,7 +61,7 @@ export const GoalsProvider = ({ children }) => {
                     history.push("/login");
                 }
                 else if(error.response.data.detail){
-                    toast.error("Essa méta não existe");
+                    toast.error("Essa atividade não existe");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -74,17 +74,17 @@ export const GoalsProvider = ({ children }) => {
         }
     };
 
-    const GoalDelete = (id) => {
+    const ActivitieDelete = (id) => {
         const token = localStorage.getItem("@userToken");
 
         if(token){
-            api.delete(`/goals/${ id }/`, {
+            api.delete(`/activities/${ id }/`, {
                 headers: {
                     Authorization:`Bearer ${ token }`
                 }
             })
             .then(() => {
-                toast.success("Meta Deletada");
+                toast.success("Atividade deletada");
             })
             .catch(error => {
                 if(error.response.data.code){
@@ -93,7 +93,7 @@ export const GoalsProvider = ({ children }) => {
                     history.push("/login");
                 }
                 else if(error.response.data.detail){
-                    toast.error("Essa méta não existe");
+                    toast.error("Essa atividade não existe");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -107,10 +107,10 @@ export const GoalsProvider = ({ children }) => {
     };
 
     return (
-        <GoalsContext.Provider value={ { GoalRegister, GoalUpdate, GoalDelete } }>
+        <ActivitiesContext.Provider value={ { ActivitieRegister, ActivitieUpdate, ActivitieDelete } }>
             { children }
-        </GoalsContext.Provider>
+        </ActivitiesContext.Provider>
     );
 };
 
-export const useGoals = () => useContext(GoalsContext);
+export const useActivities = () => useContext(ActivitiesContext);

@@ -176,7 +176,6 @@ export const GroupsProvider = ({ children }) => {
                 }
             })
             .then(response => {
-                setGroups([ ...groups, response.data ]);
                 toast.remove();
                 toast.success("Grupo Criado");
             })
@@ -215,7 +214,7 @@ export const GroupsProvider = ({ children }) => {
                 }
             })
             .then(response => {
-                setGroups([ groups.map(group => {
+                setGroups([ ...groups.map(group => {
                     if(response.data.id === group.id){
                         return response.data;
                     }
@@ -236,10 +235,6 @@ export const GroupsProvider = ({ children }) => {
                 }
                 else if(error.response.data.message){
                     toast.arguments("Apenas o criador do grupo pode atualizar o grupo");
-                    localStorage.removeItem("@userToken");
-                    setGroups([]);
-                    setSubGroups([]);
-                    history.push("/login");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");

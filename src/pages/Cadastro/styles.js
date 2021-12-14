@@ -10,6 +10,7 @@ to {
     
 }
 `;
+
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -35,7 +36,7 @@ export const Container = styled.div`
 const appearFromLeft = keyframes`
 from{
     opacity:0;
-    transform:translateX(50px)
+    transform:translateX(-50px)
 }
 to {
     opacity: 1;
@@ -47,17 +48,24 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   border-radius: 8px;
   background-color: #ffb703;
   width: 300px;
-  height: 350px;
+  height: 400px;
   animation: ${appearFromLeft} 1s;
 
   h1 {
-    margin: 20px 0;
+    margin: 10px 0 0 0;
     color: white;
     font-size: 45px;
     text-shadow: 3px 2px 2px #474747, 25px 0px 2px rgba(206, 89, 55, 0);
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   span {
@@ -73,7 +81,7 @@ export const Form = styled.form`
     color: white;
     font-weight: 600;
     text-shadow: 2px 1px 2px #474747, 25px 0px 2px rgba(206, 89, 55, 0);
-    margin: 10px 0 0 0;
+    margin: 0 0 25px 0;
     a {
       text-decoration: none;
       color: #219ebc;
@@ -105,7 +113,7 @@ export const Button = styled.button`
   cursor: pointer;
   width: 240px;
   height: 40px;
-  margin: 20px 0;
+  margin: 15px 0 20px 0;
   border-radius: 5px;
   border: 1px solid #126782;
   background-color: #126782;

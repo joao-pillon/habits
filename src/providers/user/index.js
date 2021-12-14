@@ -8,55 +8,9 @@ import api from "../../services/api";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, userState] = useState(null);
-  const [users, usersState] = useState([]);
-
-  const history = useHistory();
-
-  const userRegister = (datas) => {
-    toast.loading("Espere...");
-
-    api
-      .post("/users/", datas)
-      .then(() => {
-        toast.remove();
-        toast.success("Usuário Cadastrado");
-        history.push("/login");
-      })
-      .catch((error) => {
-        toast.remove();
-        if (error.response.data.username) {
-          toast.error("Esse nome de usuário já existe");
-        } else if (error.response.data.password) {
-          toast.error("Senha necessária");
-        } else {
-          toast.error("Erro, tente novamente mais tarde");
-        }
-      });
-  };
-
-  const userLogin = (datas) => {
-    toast.loading("Espere...");
-
-    api
-      .post("/sessions/", datas)
-      .then((response) => {
-        localStorage.setItem("@userToken", response.data.access);
-        toast.remove();
-        toast.success("Login realizado");
-        history.push("/");
-      })
-      .catch((error) => {
-        toast.remove();
-        if (error.response.data.detail) {
-          toast.error("Usuário e/ou senha estão errados");
-        } else if (error.response.data.password) {
-          toast.error("Senha necessária");
-        } else {
-          toast.error("Erro, tente novamente mais tarde");
-        }
-      });
-  };
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [page, setPage] = useState(1);
 
   const userUpdate = (datas) => {
     const token = localStorage.getItem("@userToken");
@@ -72,7 +26,7 @@ export const UserProvider = ({ children }) => {
           },
         })
         .then((response) => {
-          userState(response.data);
+          setUser(response.data);
           toast.remove();
           toast.success("Dados atualizados");
           history.push("/");
@@ -82,17 +36,17 @@ export const UserProvider = ({ children }) => {
           if (error.response.data.message) {
             toast.error("Você não tem permissão para editar esse usuário");
             localStorage.removeItem("@userToken");
-            userState(null);
+            setUser(null);
             history.push("/login");
           } else if (error.response.data.username) {
-            toast.error("Esse usuário já existe");
+            toast.error("Esse username já existe");
           } else {
             toast.error("Erro, tente novamente mais tarde");
           }
         });
     } else {
       toast.arguments("Faça login para continuar");
-      userState(null);
+      setUser(null);
       history.push("/login");
     }
   };
@@ -105,16 +59,16 @@ export const UserProvider = ({ children }) => {
       api
         .get(`/users/${decode_token.user_id}/`)
         .then((response) => {
-          userState(response.data);
+          setUser(response.data);
         })
         .catch(() => {
           localStorage.removeItem("@userToken");
           toast.arguments("Faça login para continuar");
-          userState(null);
+          setUser(null);
         });
     } else {
       toast.arguments("Faça login para continuar");
-      userState(null);
+      setUser(null);
       history.push("/login");
     }
   };
@@ -123,21 +77,55 @@ export const UserProvider = ({ children }) => {
     api
       .get(`/users/${id}/`)
       .then((response) => {
-        userState(response.data);
+        setUser(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const getUsers = (page) => {
+  const getUsers = () => {
     api
-      .get(`/users/${page ? `?page=${page}` : ""}`)
+      .get("/users/")
       .then((response) => {
-        usersState(response.data.results);
+        setUsers(response.data.results);
+      })
+      .catch(() => {
+        localStorage.removeItem("@userToken");
+        toast.arguments("Faça login para continuar");
+        setUsers(null);
+      });
+  };
+
+  const nextUsers = () => {
+    api
+      .get(`/users/?page=${page + 1}`)
+      .then((response) => {
+        setUsers(response.data.results);
+        setPage(page + 1);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.data.detail) {
+          toast.error("A paǵina já está no final");
+        } else {
+          console.log(error);
+        }
+      });
+  };
+
+  const previousUsers = () => {
+    api
+      .get(`/users/?page=${page - 1}`)
+      .then((response) => {
+        setUsers(response.data.results);
+        setPage(page - 1);
+      })
+      .catch((error) => {
+        if (error.response.data.detail) {
+          toast.error("A paǵina já está no início");
+        } else {
+          console.log(error);
+        }
       });
   };
 
@@ -152,11 +140,13 @@ export const UserProvider = ({ children }) => {
         getUser,
         getUsers,
         getUserId,
+        nextPage: nextUsers,
+        previousPage: previousUsers,
       }}
     >
       {children}
     </UserContext.Provider>
   );
-};
+};}
 
 export const useUser = () => useContext(UserContext);

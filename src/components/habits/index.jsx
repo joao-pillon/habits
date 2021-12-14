@@ -19,7 +19,9 @@ const HabitsCard = () => {
             <p>Título:{hab.title}</p>
             <p>Gênero:{hab.category}</p>
             <p>Frequencia:{hab.frequency}</p>
-            <button onClick={() => Update(hab.how_much_achieved, "sub")}>
+            <button
+              onClick={() => Update(hab.how_much_achieved, "sub", hab.id)}
+            >
               -
             </button>
             <p>Pagina:{hab.how_much_achieved}</p>

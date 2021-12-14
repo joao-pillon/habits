@@ -8,8 +8,8 @@ import api from "../../services/api";
 
 const HabitsContext = createContext();
 
-export const HabitsProviders = ({ children }) => {
-    const [ habits, habitsState ] = useState([]);
+export const HabitsProvider = ({ children }) => {
+    const [ habits, setHabits ] = useState([]);
     const history = useHistory();
 
     const habitsRegister = (datas) => {
@@ -25,16 +25,18 @@ export const HabitsProviders = ({ children }) => {
                 }
             })
             .then(response => {
-                habitsState([ ...habits, response.data ]);
+                setHabits([ ...habits, response.data ]);
                 toast.remove();
                 toast.success("Habito Cadastrado");
             })
             .catch(error => {
                 toast.remove();
-                if(error.response.data.message){
-                    toast.error("Você não tem permissão para editar esse usuário");
+
+                if(error.response.data.code){
+                    toast.error("Você não tem permissão para cadastrar nesse usuário");
                     localStorage.removeItem("@userToken");
-                    habitsState([]);
+                    setHabits([]);
+                    history.push("/login");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -43,7 +45,7 @@ export const HabitsProviders = ({ children }) => {
         }
         else {
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
     };
@@ -60,7 +62,7 @@ export const HabitsProviders = ({ children }) => {
                 }
             })
             .then(response => {
-                habitsState([ ...habits.map(habit => {
+                setHabits([ ...habits.map(habit => {
                     if(response.data.id === habit.id){
                         return response.data;
                     }
@@ -71,10 +73,12 @@ export const HabitsProviders = ({ children }) => {
             })
             .catch(error => {
                 toast.remove();
-                if(error.response.data.message){
-                    toast.error("Você não tem permissão para editar esse usuário");
+
+                if(error.response.data.code){
+                    toast.error("Você não tem permissão para editar esse habito");
                     localStorage.removeItem("@userToken");
-                    habitsState([]);
+                    setHabits([]);
+                    history.push("/login");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -83,18 +87,16 @@ export const HabitsProviders = ({ children }) => {
         }
         else{
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
-    }
+    };
 
     const habitsDelete = (id) => {
         const token = localStorage.getItem("@userToken");
 
         if(token){
-            toast.loading("Espere...");
-
-            api.delete(`/habits/${ id }/`,  {
+            api.delete(`/habits/${ id }/`, {
                 headers: {
                     Authorization:`Bearer ${ token }`
                 }
@@ -102,18 +104,19 @@ export const HabitsProviders = ({ children }) => {
             .then(() => {
                 toast.remove();
                 toast.success("Habito deletado");
-                habitsState(habits.filter(habit => habit.id !== id));
+                setHabits(habits.filter(habit => habit.id !== id));
             })
             .catch(error => {
                 toast.remove();
 
-                if(error.response.data.detail){
+                if(error.response.data.code){
                     toast.error("Habito não encontrado");
                 }
                 else if(error.response.data.message){
-                    toast.error("Você não tem permissão para editar esse usuário");
+                    toast.error("Você não tem permissão para deletar esse hábito");
                     localStorage.removeItem("@userToken");
-                    habitsState([]);
+                    setHabits([]);
+                    history.push("/login");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -122,10 +125,10 @@ export const HabitsProviders = ({ children }) => {
         }
         else{
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
-    }
+    };
 
     const getHabits = () => {
         const token = localStorage.getItem("@userToken");
@@ -137,15 +140,17 @@ export const HabitsProviders = ({ children }) => {
                 }
             })
             .then(response => {
-                habitsState(response.data);
+                setHabits(response.data);
             })
             .catch(error => {
+                toast.arguments("Faça login para continuar");
+                history.push("/login");
                 console.log(error);
             });
         }
         else{
             toast.arguments("Faça login para continuar");
-            habitsState([]);
+            setHabits([]);
             history.push("/login");
         }
     };

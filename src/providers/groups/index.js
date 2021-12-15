@@ -8,6 +8,7 @@ import api from "../../services/api";
 const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
+    const [ group, setGroup ] = useState(null)
     const [ groups, setGroups ] = useState([]);
     const [ subGroups, setSubGroups ] = useState([]);
     const [ page, setPage ] = useState(1);
@@ -24,6 +25,16 @@ export const GroupsProvider = ({ children }) => {
             console.log(error);
         });
     };
+
+    const getGroupId = (id) => {
+        api.get(`/groups/${id}/`)
+        .then(response => {
+            setGroup(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    }
 
     const nextGroups = (category, search) => {
         api.get(`/groups/?page=${ page + 1 }&category${ (category)? `=${category}`: "" }&search${ (search)? `=${search}`: "" }`)
@@ -250,8 +261,9 @@ export const GroupsProvider = ({ children }) => {
     };
 
     return (
-        <GroupsContext.Provider value={ { groups, subGroups, getGroups, nextGroups, previousGroups, 
-            getSubGroups, groupRegister, groupUpdate, subscribeGroup, unsubscribeGroup } }>
+        <GroupsContext.Provider value={ { group, groups, subGroups, getGroups, nextGroups, 
+            previousGroups, getGroupId, getSubGroups, groupRegister, groupUpdate, subscribeGroup, 
+            unsubscribeGroup } }>
             { children }
         </GroupsContext.Provider>
     );

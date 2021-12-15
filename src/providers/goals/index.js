@@ -1,4 +1,4 @@
-import { createContext, useContext  } from "react";
+import { createContext, useContext, useState  } from "react";
 import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -9,6 +9,112 @@ const GoalsContext = createContext();
 
 export const GoalsProvider = ({ children }) => {
     const history = useHistory();
+    const [ goals, setGoals ] = useState([]);
+    const [ page, setPage ] = useState(1);
+
+    const getGoals = (id) => {
+        const token = localStorage.getItem("@userToken");
+
+        if(token) {
+            api.get(`/goals/?group=${ id }`, {
+                headers: {
+                    Authorization:`Bearer ${ token }`
+                }
+            })
+            .then(response => {
+                setGoals(response.data.results);
+            })
+            .catch(error => {
+                if(error.response.data.code){
+                    toast.arguments("Faça login para continuar");
+                    localStorage.removeItem("@userToken");
+                    history.push("/login");
+                }
+                else if(error.response.data.group){
+                    toast.error("Esse grupo não existe");
+                }
+                else{
+                    toast.error("Erro, tente novamente mais tarde");
+                }
+            });
+        }
+        else{
+            toast.arguments("Faça login para continuar");
+            history.push("/login");
+        }
+    };
+
+    const nextGoals = (id) => {
+        const token = localStorage.getItem("@userToken");
+
+        if(token) {
+            api.get(`/goals/?group=${ id }&page=${page + 1}`, {
+                headers: {
+                    Authorization:`Bearer ${ token }`
+                }
+            })
+            .then(response => {
+                setPage(page + 1);
+                setGoals(response.data.results);
+            })
+            .catch(error => {
+                if(error.response.data.code){
+                    toast.arguments("Faça login para continuar");
+                    localStorage.removeItem("@userToken");
+                    history.push("/login");
+                }
+                else if(error.response.data.group){
+                    toast.error("Esse grupo não existe");
+                }
+                else if(error.response.data.detail){
+                    toast.error("A paǵina já está no final");
+                }
+                else{
+                    toast.error("Erro, tente novamente mais tarde");
+                }
+            });
+        }
+        else{
+            toast.arguments("Faça login para continuar");
+            history.push("/login");
+        }
+    };
+
+    const previousGoals = (id) => {
+        const token = localStorage.getItem("@userToken");
+
+        if(token){
+            api.get(`/goals/?group=${ id }&page=${page - 1}`, {
+                headers: {
+                    Authorization:`Bearer ${ token }`
+                }
+            })
+            .then(response => {
+                setPage(page - 1);
+                setGoals(response.data.results);
+            })
+            .catch(error => {
+                if(error.response.data.code){
+                    toast.arguments("Faça login para continuar");
+                    localStorage.removeItem("@userToken");
+                    history.push("/login");
+                }
+                else if(error.response.data.group){
+                    toast.error("Esse grupo não existe");
+                }
+                else if(error.response.data.detail){
+                    toast.error("A paǵina já está no início");
+                }
+                else{
+                    toast.error("Erro, tente novamente mais tarde");
+                }
+            });
+        }
+        else{
+            toast.arguments("Faça login para continuar");
+            history.push("/login");
+        }
+    };
 
     const GoalRegister = (data) => {
         const token = localStorage.getItem("@userToken");
@@ -107,7 +213,8 @@ export const GoalsProvider = ({ children }) => {
     };
 
     return (
-        <GoalsContext.Provider value={ { GoalRegister, GoalUpdate, GoalDelete } }>
+        <GoalsContext.Provider value={ { goals, getGoals, previousGoals, nextGoals, GoalRegister, 
+        GoalUpdate, GoalDelete } }>
             { children }
         </GoalsContext.Provider>
     );

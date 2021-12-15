@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import useGoals from "../../providers/goals";
+import { useGoals } from "../../providers/goals";
 import { useGroups } from "../../providers/groups";
 
 const GoalsCard = () => {
   const [goalsList, setGoalsList] = useState([]);
 
-  const { getSubGroups, groups } = useGroups;
-  const { GoalDelete } = useGoals;
+  const { getSubGroups, groups } = useGroups();
+  const { GoalDelete } = useGoals();
 
   useEffect(() => {
     getSubGroups();

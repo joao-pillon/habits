@@ -35,3 +35,24 @@ export const Div = styled.div`
     }
   }
 `;
+
+export const Search = styled.section`
+  
+`;
+
+export const Input = styled.input`
+  width: 240px;
+  height: 40px;
+  padding-left: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid gray;
+
+  &:focus {
+    outline-color: #219ebc;
+  }
+
+  &::placeholder {
+    color: gray;
+  }
+`;

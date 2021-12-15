@@ -4,20 +4,19 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  height: 100%;
   justify-content: space-between;
 `;
 
-export const Header = styled.header`
-  height: 90px;
-  width: 90%;
+export const Profile = styled.header`
+  height: 75px;
+  width: 85%;
   background-color: #ffb703;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 20px;
 
   div {
     cursor: pointer;
@@ -28,12 +27,47 @@ export const Header = styled.header`
     justify-content: space-around;
 
     h1 {
-      font-size: 25px;
+      font-size: 22px;
     }
 
     svg {
       font-size: 45px;
     }
+  }
+`;
+
+export const HeaderContainer = styled.div`
+  width: 100%;
+  height: 54px;
+  background-color: #219ebc;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;
+
+export const Button = styled.button`
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #126782;
+  background-color: #126782;
+  position: absolute;
+  right:4%;
+
+  :hover {
+    transition: 0.3s;
+    border: 1px solid #023047;
+    background-color: #023047;
+    transform: scale(0.99);
+  }
+
+  @media only screen and (min-width: 600px) {
+    width: 120px;
   }
 `;
 

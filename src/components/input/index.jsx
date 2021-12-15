@@ -1,6 +1,10 @@
-import thisInput from "./styles.js"
+import { thisInput } from "./styles.js";
 
-const Input = () =>{
-    <thisInput/>
-}
-export default Input
+const Input = () => {
+  return (
+    <>
+      <thisInput />
+    </>
+  );
+};
+export default Input;

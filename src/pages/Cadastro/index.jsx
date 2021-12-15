@@ -48,6 +48,7 @@ const Cadastro = () => {
   const onSubmit = (data) => {
     userRegister(data);
   };
+  
   return (
     <Container className="container">
       <Form onSubmit={handleSubmit(onSubmit)}>

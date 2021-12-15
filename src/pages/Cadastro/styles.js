@@ -3,11 +3,9 @@ import styled, { keyframes } from "styled-components";
 const appearFrom = keyframes`
 from{
     opacity:0;
-    
 }
 to {
     opacity: 1;
-    
 }
 `;
 

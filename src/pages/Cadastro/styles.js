@@ -95,6 +95,7 @@ export const Input = styled.input`
   height: 40px;
   padding-left: 10px;
   margin: 10px 0;
+  color: black;
   border-radius: 5px;
   border: 1px solid gray;
 

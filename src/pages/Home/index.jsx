@@ -20,7 +20,7 @@ const Home = () => {
 
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
-    getGroups(txtCategory, txtSearch);
+    getGroups();
   }, []);
 
 

@@ -1,13 +1,13 @@
 import Button from "../../components/button";
 import Container from "../../components/container";
 import HomeImg from "../../assets/Newhome.png";
+import { useGroups } from "../../providers/groups";
+import CardGroup from "../../components/cardGroup";
 
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { useGroups } from "../../providers/groups";
-import { useUser } from "../../providers/user";
 
-import { Div, Search, Input } from "./styles";
+import { Div, Search, Input, Section } from "./styles";
 
 const Home = () => {
   const history = useHistory();
@@ -41,16 +41,21 @@ const Home = () => {
         </Container>
       }
       {token && 
-        <Search>
-          <div>
+        <>
+          <Search>
             <Input placeholder="Pesquisar por categoria" value={ txtCategory } onChange={ (e) => {
               setCategory(e.target.value);
             } } />
             <Input placeholder="Pesquisar por nome" value={ txtSearch } onChange={ (e) => {
               setSearch(e.target.value);
             } } />
-          </div>
-        </Search>
+          </Search>
+          <Section>
+            { groups.map(group => (
+              <CardGroup key={ group.id } group={ group } />
+            )) }
+          </Section>
+        </>
       }
     </>
   );

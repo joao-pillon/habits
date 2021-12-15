@@ -18,7 +18,7 @@ const GroupsCard = () => {
             <p>discrição:{group.description}</p>
             <p>Gênero:{group.category}</p>
             <p>criador:{group.creator.username}</p>
-            {/* <p>usuarios:{[group.users_on_group].length}</p> */}
+            <p>usuarios:{[group.users_on_group].length}</p>
             <button onClick={() => unsubscribeGroup(group.id)}>
               sair do grupo
             </button>

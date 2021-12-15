@@ -2,9 +2,11 @@ import useGoals from "../../providers/goals";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useParams } from "react-router-dom";
 
 const CreatGoals = () => {
-  const { GoalRegister } = useGoals;
+  const { GoalRegister } = useGoals();
+  const { id } = useParams();
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -17,7 +19,13 @@ const CreatGoals = () => {
   });
 
   const onSubmit = (data) => {
-    GoalRegister(data);
+    const datas = {
+      title: `${data.title}`,
+      difficulty: `${data.difficulty}`,
+      how_much_achieved: `${data.how_much_achieved}`,
+      group: `${id}`,
+    };
+    GoalRegister(datas);
   };
 
   return (

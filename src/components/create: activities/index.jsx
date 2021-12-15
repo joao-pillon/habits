@@ -2,9 +2,11 @@ import { useActivites } from "../../providers/activities";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useParams } from "react-router-dom";
 
 const CreateActivites = () => {
   const { ActivitesRegister } = useActivites();
+  const { id } = useParams();
 
   const formSchema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -16,7 +18,12 @@ const CreateActivites = () => {
   });
 
   const onSubmit = (data) => {
-    ActivitesRegister(data);
+    const datas = {
+      title: `${data.title}`,
+      realization_time: `${data.realization_time}`,
+      group: `${id}`,
+    };
+    ActivitesRegister(datas);
   };
 
   return (

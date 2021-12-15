@@ -5,8 +5,17 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import LoginImg from "../../assets/login.png";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  const history = useHistory();
+  useEffect(() => {
+    const token = localStorage.getItem("@userToken");
+    if (token) {
+      history.push("/dashboard");
+    }
+  });
   const { userLogin } = useUser();
 
   const schema = yup.object().shape({

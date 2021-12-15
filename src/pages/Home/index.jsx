@@ -11,7 +11,7 @@ import { Div, Search, Input, Section } from "./styles";
 
 const Home = () => {
   const history = useHistory();
-  const token = localStorage.getItem("@userToken");
+  const [ token, setToken ] = useState(null);
   const { getGroups, groups } = useGroups();
 
   const [ txtCategory, setCategory ] = useState("");
@@ -19,6 +19,7 @@ const Home = () => {
 
 
   useEffect(() => {
+    setToken(localStorage.getItem("@userToken"));
     getGroups(txtCategory, txtSearch);
   }, []);
 

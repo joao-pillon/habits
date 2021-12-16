@@ -11,15 +11,15 @@ import { Div } from "./styles";
 
 const Group_Id = () => {
   const history = useHistory();
-  const [token, setToken] = useState(null);
-  const { getGroups, groups } = useGroups();
+  const [ token, setToken] = useState(null);
+  const { getGroupsId, groups } = useGroups();
 
   const [txtCategory, setCategory] = useState("");
   const [txtSearch, setSearch] = useState("");
 
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
-    getGroups();
+    getGroupsId();
   }, []);
 
   return <>{!token && <Container>

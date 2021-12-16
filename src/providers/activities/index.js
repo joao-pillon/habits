@@ -126,6 +126,7 @@ export const ActivitiesProvider = ({ children }) => {
                 }
             })
             .then(() => {
+                getActivities();
                 toast.success("Atividades cadastrada");
             })
             .catch(error => {
@@ -158,6 +159,7 @@ export const ActivitiesProvider = ({ children }) => {
                 }
             })
             .then(() => {
+                getActivities();
                 toast.success("Atividade atualizada");
             })
             .catch(error => {
@@ -190,6 +192,7 @@ export const ActivitiesProvider = ({ children }) => {
                 }
             })
             .then(() => {
+                getActivities();
                 toast.success("Atividade deletada");
             })
             .catch(error => {

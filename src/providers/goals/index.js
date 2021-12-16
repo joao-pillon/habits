@@ -127,6 +127,7 @@ export const GoalsProvider = ({ children }) => {
             })
             .then(() => {
                 toast.success("Meta cadastrada");
+                getGoals();
             })
             .catch(error => {
                 if(error.response.data.code){
@@ -159,6 +160,7 @@ export const GoalsProvider = ({ children }) => {
             })
             .then(() => {
                 toast.success("Meta atualizada");
+                getGoals();
             })
             .catch(error => {
                 if(error.response.data.code){
@@ -191,6 +193,7 @@ export const GoalsProvider = ({ children }) => {
             })
             .then(() => {
                 toast.success("Meta Deletada");
+                getGoals();
             })
             .catch(error => {
                 if(error.response.data.code){

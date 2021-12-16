@@ -24,20 +24,16 @@ const Home = () => {
 
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
-    getUser();
+    getUser(txtCategory, txtSearch);
     getGroups(txtCategory, txtSearch);
-  }, [txtCategory, txtSearch, user]);
+  }, [txtCategory, txtSearch]);
 
   const onSubscribe = (id) => {
     subscribeGroup(id);
-    setCategory("");
-    setSearch("");
   }
 
   const onUnsubscribe = (id) => {
     unsubscribeGroup(id);
-    setCategory("");
-    setSearch("");
   }
 
   return (

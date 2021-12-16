@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 import { useGroups } from "../../providers/groups";
 
 const GroupsCard = () => {
-  const [group, setGroup] = useState([]);
-
-  const { getSubGroups, groups, unsubscribeGroup } = useGroups;
+  const { getSubGroups, subGroups, unsubscribeGroup } = useGroups();
   useEffect(() => {
     getSubGroups();
-    setGroup(groups);
-  }, [getSubGroups, groups]);
+    console.log(subGroups);
+  }, []);
+
   return (
     <div>
-      {group.map((group) => {
+      {subGroups.map((group) => {
         return (
-          <Link key={group.id} to={`/group/${group.id}`}>
+          <>
             <div>
-              <p>Nome:{group.name}</p>
+              <Link key={group.id} to={`/group/${group.id}`}>
+                <p>Nome:{group.name}</p>
+              </Link>
               <p>Descrição:{group.description}</p>
               <p>Gênero:{group.category}</p>
               <p>Criador:{group.creator.username}</p>
@@ -25,7 +26,7 @@ const GroupsCard = () => {
                 Sair do grupo
               </button>
             </div>
-          </Link>
+          </>
         );
       })}
     </div>

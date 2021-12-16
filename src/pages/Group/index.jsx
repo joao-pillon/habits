@@ -3,6 +3,7 @@ import Container from "../../components/container";
 import HomeImg from "../../assets/Newhome.png";
 import { useGroups } from "../../providers/groups";
 import CardGroup from "../../components/cardGroup";
+import GroupsCard from "../../components/groups";
 
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -15,14 +16,18 @@ const Group = () => {
 
   const [txtCategory, setCategory] = useState("");
   const [txtSearch, setSearch] = useState("");
-
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
     getGroups();
   }, []);
 
-  return <>{!token && <Container>
-    </Container>}</>;
+  return (
+    <>
+      <Container>
+        <GroupsCard />
+      </Container>
+    </>
+  );
 };
 
 export default Group;

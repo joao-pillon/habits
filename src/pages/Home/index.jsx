@@ -30,10 +30,14 @@ const Home = () => {
 
   const onSubscribe = (id) => {
     subscribeGroup(id);
+    setCategory("");
+    setSearch("");
   }
 
   const onUnsubscribe = (id) => {
     unsubscribeGroup(id);
+    setCategory("");
+    setSearch("");
   }
 
   return (

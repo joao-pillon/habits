@@ -10,7 +10,6 @@ export default createGlobalStyle`
     box-sizing: border-box;
     outline: 0;
     color: white;
-<<<<<<< HEAD
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     box-sizing: border-box;
 }
@@ -18,16 +17,6 @@ export default createGlobalStyle`
 body {
     background-color: #023047;
     height: 100vh;
-=======
-    font-family: 'Readex Pro', sans-serif;
-
-}
-
-
-body {
-    background-color: #023047;
-    height: 100%;
->>>>>>> feature/movimentaçãoDinamica
     width: 100%;
 }
 `;

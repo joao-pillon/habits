@@ -35,6 +35,24 @@ export const Header = styled.header`
       font-size: 45px;
     }
   }
+
+  section {
+    cursor: pointer;
+    display: flex;
+    width: 130px;
+    margin-left: 15px;
+    align-items: center;
+    justify-content: space-around;
+
+    h1 {
+      font-size: 25px;
+    }
+
+    svg {
+      font-size: 45px;
+      filter: drop-shadow(5px 5px 10px #000);
+    }
+  }
 `;
 
 export const Section = styled.section`

@@ -38,12 +38,13 @@ export const Profile = styled.header`
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  height: 54px;
-  background-color: #219ebc;
+  height: 40px;
+  background-color: #126782;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
   flex-wrap: wrap;
+  margin-top:5px;
 `;
 
 export const Button = styled.button`
@@ -54,13 +55,14 @@ export const Button = styled.button`
   height: 30px;
   margin: 10px;
   border-radius: 5px;
-  border: 1px solid #126782;
-  background-color: #126782;
+  border: 1px solid #219ebc;
+  background-color: #219ebc;
   position: absolute;
+  top: 0%;
   right:4%;
 
   :hover {
-    transition: 0.3s;
+    transition: 0.5s;
     border: 1px solid #023047;
     background-color: #023047;
     transform: scale(0.99);

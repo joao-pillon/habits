@@ -11,29 +11,19 @@ import { Div } from "./styles";
 
 const Group_Id = () => {
   const history = useHistory();
-  const [ token, setToken ] = useState(null);
+  const [token, setToken] = useState(null);
   const { getGroups, groups } = useGroups();
 
-  const [ txtCategory, setCategory ] = useState("");
-  const [ txtSearch, setSearch ] = useState("");
-
+  const [txtCategory, setCategory] = useState("");
+  const [txtSearch, setSearch] = useState("");
 
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
     getGroups();
   }, []);
 
-
-  return (
-    <>
-      {!token && 
-        <Container>
-          
-        </Container>
-      }
-      
-    </>
-  );
+  return <>{!token && <Container>
+    </Container>}</>;
 };
 
 export default Group_Id;

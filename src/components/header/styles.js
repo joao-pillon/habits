@@ -12,8 +12,8 @@ margin-left: 15px;
     content: "Reading Habits";
 }
 @media only screen and (min-width: 600px)  {
-    font-size: 28px;
-    margin-top: 12px;
+    font-size: 25px;
+    margin-top: 4px;
     margin-left: 24px;
 }
 `;

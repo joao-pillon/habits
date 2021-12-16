@@ -12,7 +12,6 @@ export const GroupsProvider = ({ children }) => {
     const [ groups, setGroups ] = useState([]);
     const [ subGroups, setSubGroups ] = useState([]);
     const [ page, setPage ] = useState(1);
-
     const history = useHistory();
 
 

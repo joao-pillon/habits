@@ -57,7 +57,7 @@ const Home = () => {
           </Search>
           <Section>
             { groups.map(group => (
-              <CardGroup key={ group.id } group={ group } userId={ user.id } />
+              <CardGroup key={ group.id } group={ group } />
             )) }
           </Section>
           <Section>

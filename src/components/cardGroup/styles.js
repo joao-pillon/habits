@@ -4,7 +4,8 @@ export const Card = styled.div`
     width: 100%;
     display: flex;
     margin: 0 10px 10px 0;
-    padding: 15px;
+    padding: 10px;
+    padding-bottom: 30px;
     border-radius: 5px;
     flex-direction: column;
     justify-content: space-between;

@@ -1,4 +1,4 @@
-import { HeaderContainer, Button, Container, Profile, Section } from "./styles";
+import { HeaderContainer, Button, Button2, Container, Profile, Section } from "./styles";
 import Header from "../../components/header";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillPlusCircleFill, BsSearch } from "react-icons/bs";
@@ -30,6 +30,7 @@ const Dashboard = () => {
       <HeaderContainer>
         <Header />
         <Button onClick={() => handleClick()}>Sair</Button>
+        <Button2 onClick={() => history.push("/")}>Grupos</Button2>
       </HeaderContainer>
 
       <Profile>

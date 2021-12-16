@@ -51,7 +51,7 @@ export const Button = styled.button`
   color: white;
   font-weight: 600;
   cursor: pointer;
-  width: 80px;
+  width: 60px;
   height: 30px;
   margin: 10px;
   border-radius: 5px;
@@ -68,10 +68,39 @@ export const Button = styled.button`
     transform: scale(0.99);
   }
 
-  @media only screen and (min-width: 600px) {
-    width: 120px;
+  @media only screen and (min-width: 768px) {
+    right:4%;
   }
 `;
+
+export const Button2 = styled.button`
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #219ebc;
+  background-color: #219ebc;
+  position: absolute;
+  top: 0%;
+  right:20%;
+
+  :hover {
+    transition: 0.5s;
+    border: 1px solid #023047;
+    background-color: #023047;
+    transform: scale(0.99);
+  }
+
+  @media only screen and (min-width: 768px) {
+    right:14%;
+  }
+  @media only screen and (min-width: 1024px) {
+    right:10%;
+  }
+`
 
 export const Section = styled.section`
   display: flex;

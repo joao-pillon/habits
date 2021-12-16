@@ -4,22 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
-  width: 100vw;
-  height: 100vh;
-  justify-content: space-between;
-`;
-
-export const Header = styled.header`
-  height: 90px;
-  width: 90%;
-  background-color: #ffb703;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-=======
   height: 100%;
   justify-content: space-between;
 `;
@@ -33,7 +17,6 @@ export const Profile = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
->>>>>>> feature/movimentaçãoDinamica
 
   div {
     cursor: pointer;
@@ -44,36 +27,13 @@ export const Profile = styled.header`
     justify-content: space-around;
 
     h1 {
-<<<<<<< HEAD
-      font-size: 25px;
-=======
       font-size: 22px;
->>>>>>> feature/movimentaçãoDinamica
     }
 
     svg {
       font-size: 45px;
     }
   }
-<<<<<<< HEAD
-
-  section {
-    cursor: pointer;
-    display: flex;
-    width: 130px;
-    margin-left: 15px;
-    align-items: center;
-    justify-content: space-around;
-
-    h1 {
-      font-size: 25px;
-    }
-
-    svg {
-      font-size: 45px;
-      filter: drop-shadow(5px 5px 10px #000);
-    }
-=======
 `;
 
 export const HeaderContainer = styled.div`
@@ -108,7 +68,6 @@ export const Button = styled.button`
 
   @media only screen and (min-width: 600px) {
     width: 120px;
->>>>>>> feature/movimentaçãoDinamica
   }
 `;
 

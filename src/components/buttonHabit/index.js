@@ -1,9 +1,6 @@
-//Botão feito para aumentar ou diminuir a pagina do livro
+//Botão feito para aumentar ou diminuir a pagina do 
 
-import { useHabits } from "../../providers/habits";
-
-const Update = (number, type, id) => {
-  const { habitsUpdate } = useHabits;
+const Update = (number, type, id, habitsUpdate) => {
   if (type === "add") {
     const newNumber = number + 1;
     const data = {

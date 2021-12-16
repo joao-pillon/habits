@@ -6,7 +6,7 @@ import CardGroup from "../../components/cardGroup";
 
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
+// something
 import { Div } from "./styles";
 
 const Group = () => {

@@ -44,7 +44,7 @@ export const GroupsProvider = ({ children }) => {
         })
         .catch(error => {
             if(error.response.data.detail){
-                toast.error("A paǵina já está no final");
+                toast.error("A paǵina já está no início");
             }
             else{
                 console.log(error);
@@ -111,7 +111,7 @@ export const GroupsProvider = ({ children }) => {
                 }
             })
             .then(() => {
-                getSubGroups();
+                getGroups();
                 toast.success("Usuário inscrito");
             })
             .catch(error => {
@@ -149,6 +149,7 @@ export const GroupsProvider = ({ children }) => {
             })
             .then(() => {
                 setSubGroups([ ...subGroups.filter(subGroup => subGroup.id !== id) ]);
+                getGroups();
                 toast.success("Usuário desinscrito");
             })
             .catch(error => {

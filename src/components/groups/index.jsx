@@ -6,7 +6,6 @@ const GroupsCard = () => {
   const { getSubGroups, subGroups, unsubscribeGroup } = useGroups();
   useEffect(() => {
     getSubGroups();
-    console.log(subGroups);
   }, []);
 
   return (

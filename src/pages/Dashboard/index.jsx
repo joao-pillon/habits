@@ -4,12 +4,14 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsFillPlusCircleFill, BsSearch } from "react-icons/bs";
 import { useState } from "react";
 import HabitsCard from "../../components/habits";
+import { useUser } from "../../providers/user";
 
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
 
 const Dashboard = () => {
   const [optionsView, setOptionsView] = useState(false);
+  const { getUser, user } = useUser();
   
   const history = useHistory();
 
@@ -18,6 +20,7 @@ const Dashboard = () => {
     if (!token) {
       history.push("/");
     }
+    getUser();
   });
 
   function handleClick() {
@@ -35,8 +38,12 @@ const Dashboard = () => {
 
       <Profile>
         <div>
-          <FaUserCircle />
-          <h1>Name</h1>
+          {user && (
+            <>
+            <FaUserCircle />
+            <h1>{ user.username }</h1>
+            </>
+          ) }
         </div>
 
       </Profile>

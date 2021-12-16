@@ -21,7 +21,6 @@ export const Profile = styled.header`
   div {
     cursor: pointer;
     display: flex;
-    width: 130px;
     margin-left: 15px;
     align-items: center;
     justify-content: space-around;

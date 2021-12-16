@@ -1,6 +1,6 @@
 import { Card } from "./styles";
 
-const CardGroup = ({ group, onClick }) => {
+const CardGroup = ({ group, idUser, subscribe, unsubscribe }) => {
     return (
         <Card>
             <h2>{ group.name }</h2>
@@ -8,7 +8,9 @@ const CardGroup = ({ group, onClick }) => {
                 <p>Categoria: { group.category }</p>
                 <span>Descrição: { group.description }</span>
             </div>
-            <button></button>
+            {(!group.users_on_group.find(user => user.id === idUser))? (
+                <button onClick={ subscribe }>inscrever-se</button>
+            ): <button onClick={ unsubscribe } className="button--unsub">desinscrever-se</button>}
         </Card>
     );
 };

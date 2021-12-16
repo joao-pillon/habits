@@ -100,7 +100,7 @@ export const GroupsProvider = ({ children }) => {
                 }
             })
             .then(() => {
-                getSubGroups();
+                getGroups();
                 toast.success("Usuário inscrito");
             })
             .catch(error => {
@@ -138,6 +138,7 @@ export const GroupsProvider = ({ children }) => {
             })
             .then(() => {
                 setSubGroups([ ...subGroups.filter(subGroup => subGroup.id !== id) ]);
+                getGroups();
                 toast.success("Usuário desinscrito");
             })
             .catch(error => {

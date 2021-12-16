@@ -14,7 +14,8 @@ import { Div, Search, Input, Section } from "./styles";
 const Home = () => {
   const history = useHistory();
   const [ token, setToken ] = useState(null);
-  const { getGroups, groups, nextGroups, previousGroups } = useGroups();
+  const { getGroups, groups, nextGroups, previousGroups, subscribeGroup, 
+    unsubscribeGroup } = useGroups();
   const { getUser, user } = useUser();
 
   const [ txtCategory, setCategory ] = useState("");
@@ -27,6 +28,17 @@ const Home = () => {
     getUser();
   }, [txtCategory, txtSearch]);
 
+  const onSubscribe = (id) => {
+    subscribeGroup(id);
+    setCategory("");
+    setSearch("");
+  }
+
+  const onUnsubscribe = (id) => {
+    unsubscribeGroup(id);
+    setCategory("");
+    setSearch("");
+  }
 
   return (
     <>
@@ -57,7 +69,9 @@ const Home = () => {
           </Search>
           <Section>
             { groups.map(group => (
-              <CardGroup key={ group.id } group={ group } />
+              <CardGroup key={ group.id } idUser={ user.id } group={ group }
+                subscribe={ () => onSubscribe(group.id) } 
+                unsubscribe={ () => onUnsubscribe(group.id) } />
             )) }
           </Section>
           <Section>

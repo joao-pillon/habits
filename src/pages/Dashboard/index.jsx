@@ -1,11 +1,14 @@
 import { Container, Header, Section } from "./styles";
 import { FaUserCircle } from "react-icons/fa";
-import { BsFillPlusCircleFill } from "react-icons/bs";
+import { BsFillPlusCircleFill, BsSearch } from "react-icons/bs";
 import { useState } from "react";
 import HabitsCard from "../../components/habits";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const [optionsView, setOptionsView] = useState(false);
+
+  const history = useHistory();
 
   return (
     <Container>
@@ -14,7 +17,9 @@ const Dashboard = () => {
           <FaUserCircle />
           <h1>Name</h1>
         </div>
-        <div></div>
+        <section>
+          <BsSearch onClick={() => history.push("/")} />
+        </section>
       </Header>
       <HabitsCard />
 

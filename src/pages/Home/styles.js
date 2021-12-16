@@ -46,8 +46,20 @@ export const Search = styled.section`
   justify-content: center;
   align-items: center;
 
-  @media (min-width: 500px){
+  @media (min-width: 500px) {
     flex-direction: row;
+  }
+
+  svg {
+    font-size: 45px;
+    text-align: left;
+    width: 100px;
+    cursor: pointer;
+
+    :hover {
+      transition: 0.4s;
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -60,7 +72,7 @@ export const Section = styled.section`
   flex-wrap: wrap;
   justify-content: center;
 
-  & > button{
+  & > button {
     padding: 10px;
     font-size: 22px;
     display: flex;
@@ -68,7 +80,7 @@ export const Section = styled.section`
     border-radius: 50%;
     justify-content: center;
     align-items: center;
-    background-color: #219EBC;
+    background-color: #219ebc;
     cursor: pointer;
     margin: 5px;
   }

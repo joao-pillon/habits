@@ -5,7 +5,7 @@ import Update from "../buttonHabit";
 const HabitsCard = () => {
   const [habit, setHabit] = useState([]);
 
-  const { getHabits, habits } = useHabits;
+  const { getHabits, habits } = useHabits();
 
   useEffect(() => {
     getHabits();

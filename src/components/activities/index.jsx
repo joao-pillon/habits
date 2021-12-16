@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { useActivites } from "../../providers/activities";
-import { useGroups } from "../../providers/groups";
+import { useParams } from "react-router-dom";
 
 const ActivitiesCard = () => {
   const [activitiesList, setActivities] = useState([]);
-  const { getSubGroups, groups } = useGroups;
-  const { ActivitieDelete } = useActivites;
+  const { ActivitieDelete, getActivities, activities } = useActivites();
+  const { id } = useParams();
 
   useEffect(() => {
-    getSubGroups();
-    setActivities(groups);
-  }, [getSubGroups, groups]);
+    getActivities(id);
+    setActivities(activities);
+  }, []);
 
   return (
     <>
-      {activitiesList.activities.map((act) => {
+      {activitiesList.map((act) => {
         return (
           <div key={act.id}>
             <p>{act.title}</p>

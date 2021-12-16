@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import { useGoals } from "../../providers/goals";
-import { useGroups } from "../../providers/groups";
+import { useParams } from "react-router-dom";
 
 const GoalsCard = () => {
   const [goalsList, setGoalsList] = useState([]);
+  const { id } = useParams();
 
-  const { getSubGroups, groups } = useGroups();
-  const { GoalDelete } = useGoals();
+  const { GoalDelete, goals, getGoals } = useGoals();
 
   useEffect(() => {
-    getSubGroups();
-    setGoalsList(groups);
-  }, [getSubGroups, groups]);
+    getGoals(id);
+    setGoalsList(goals);
+  }, []);
 
   return (
     <>
-      {goalsList.goals.map((goal) => {
+      {goalsList.map((goal) => {
         return (
           <div key={goal.id}>
             <p>{goal.title}</p>

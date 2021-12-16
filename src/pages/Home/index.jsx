@@ -2,17 +2,20 @@ import Button from "../../components/button";
 import Container from "../../components/container";
 import HomeImg from "../../assets/Newhome.png";
 import { useGroups } from "../../providers/groups";
+import { useUser } from "../../providers/user";
 import CardGroup from "../../components/cardGroup";
 
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 
 import { Div, Search, Input, Section } from "./styles";
 
 const Home = () => {
   const history = useHistory();
   const [ token, setToken ] = useState(null);
-  const { getGroups, groups } = useGroups();
+  const { getGroups, groups, nextGroups, previousGroups } = useGroups();
+  const { getUser, user } = useUser();
 
   const [ txtCategory, setCategory ] = useState("");
   const [ txtSearch, setSearch ] = useState("");
@@ -21,6 +24,7 @@ const Home = () => {
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
     getGroups(txtCategory, txtSearch);
+    getUser();
   }, [txtCategory, txtSearch]);
 
 
@@ -53,8 +57,12 @@ const Home = () => {
           </Search>
           <Section>
             { groups.map(group => (
-              <CardGroup key={ group.id } group={ group } />
+              <CardGroup key={ group.id } group={ group } userId={ user.id } />
             )) }
+          </Section>
+          <Section>
+            <button onClick={ () => previousGroups(txtCategory, txtSearch) }><AiFillCaretLeft /></button>
+            <button onClick={ () => nextGroups(txtCategory, txtSearch) }><AiFillCaretRight/></button>
           </Section>
         </>
       }

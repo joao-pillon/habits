@@ -59,6 +59,19 @@ export const Section = styled.section`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  & > button{
+    padding: 10px;
+    font-size: 22px;
+    display: flex;
+    border: 0;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    background-color: #219EBC;
+    cursor: pointer;
+    margin: 5px;
+  }
 `;
 
 export const Input = styled.input`

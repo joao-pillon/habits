@@ -33,7 +33,7 @@ export const GroupsProvider = ({ children }) => {
         })
         .catch(error => {
             if(error.response.data.detail){
-                toast.error("A paǵina já está no final");
+                toast.error("A paǵina já está no início");
             }
             else{
                 console.log(error);

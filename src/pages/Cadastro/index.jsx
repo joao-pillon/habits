@@ -6,11 +6,20 @@ import * as yup from "yup";
 import { Button, Container, Form, Input } from "./styles";
 import CadastroImg from "../../assets/cadastro.png";
 import { useUser } from "../../providers/user";
+import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 // passar prop setUser
 
-const Cadastro = ({ setUser }) => {
+const Cadastro = () => {
   const { userRegister } = useUser();
+  const history = useHistory();
+  useEffect(() => {
+    const token = localStorage.getItem("@userToken");
+    if (token) {
+      history.push("/dashboard");
+    }
+  });
 
   const formSchema = yup.object().shape({
     username: yup
@@ -31,7 +40,7 @@ const Cadastro = ({ setUser }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     resolver: yupResolver(formSchema),
   });
@@ -39,7 +48,7 @@ const Cadastro = ({ setUser }) => {
   const onSubmit = (data) => {
     userRegister(data);
   };
-
+  
   return (
     <Container className="container">
       <Form onSubmit={handleSubmit(onSubmit)}>

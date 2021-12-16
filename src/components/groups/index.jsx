@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
+=======
+>>>>>>> feature/movimentaçãoDinamica
 import { useGroups } from "../../providers/groups";
 
 const GroupsCard = () => {
@@ -12,6 +15,7 @@ const GroupsCard = () => {
   }, [getSubGroups, groups]);
   return (
     <div>
+<<<<<<< HEAD
       {group.map((group) => {
         return (
           <Link key={group.id} to={`/group/${group.id}`}>
@@ -26,6 +30,20 @@ const GroupsCard = () => {
               </button>
             </div>
           </Link>
+=======
+      {group.map((group, index) => {
+        return (
+          <div key={index}>
+            <p>nome:{group.name}</p>
+            <p>discrição:{group.description}</p>
+            <p>Gênero:{group.category}</p>
+            <p>criador:{group.creator.username}</p>
+            <p>usuarios:{[group.users_on_group].length}</p>
+            <button onClick={() => unsubscribeGroup(group.id)}>
+              sair do grupo
+            </button>
+          </div>
+>>>>>>> feature/movimentaçãoDinamica
         );
       })}
     </div>

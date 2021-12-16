@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
 import { useGoals } from "../../providers/goals";
 import { useParams } from "react-router-dom";
 
@@ -16,6 +17,25 @@ const GoalsCard = () => {
   return (
     <>
       {goalsList.map((goal) => {
+=======
+import useGoals from "../../providers/goals";
+import { useGroups } from "../../providers/groups";
+
+const GoalsCard = () => {
+  const [goalsList, setGoalsList] = useState([]);
+
+  const { getSubGroups, groups } = useGroups;
+  const { GoalDelete } = useGoals;
+
+  useEffect(() => {
+    getSubGroups();
+    setGoalsList(groups);
+  }, [getSubGroups, groups]);
+
+  return (
+    <>
+      {goalsList.goals.map((goal) => {
+>>>>>>> feature/movimentaçãoDinamica
         return (
           <div key={goal.id}>
             <p>{goal.title}</p>

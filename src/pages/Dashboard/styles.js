@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
   width: 100vw;
   height: 100vh;
   justify-content: space-between;
@@ -18,6 +19,21 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+=======
+  height: 100%;
+  justify-content: space-between;
+`;
+
+export const Profile = styled.header`
+  height: 75px;
+  width: 85%;
+  background-color: #ffb703;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+>>>>>>> feature/movimentaçãoDinamica
 
   div {
     cursor: pointer;
@@ -28,13 +44,18 @@ export const Header = styled.header`
     justify-content: space-around;
 
     h1 {
+<<<<<<< HEAD
       font-size: 25px;
+=======
+      font-size: 22px;
+>>>>>>> feature/movimentaçãoDinamica
     }
 
     svg {
       font-size: 45px;
     }
   }
+<<<<<<< HEAD
 
   section {
     cursor: pointer;
@@ -52,6 +73,42 @@ export const Header = styled.header`
       font-size: 45px;
       filter: drop-shadow(5px 5px 10px #000);
     }
+=======
+`;
+
+export const HeaderContainer = styled.div`
+  width: 100%;
+  height: 54px;
+  background-color: #219ebc;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: wrap;
+`;
+
+export const Button = styled.button`
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  width: 80px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #126782;
+  background-color: #126782;
+  position: absolute;
+  right:4%;
+
+  :hover {
+    transition: 0.3s;
+    border: 1px solid #023047;
+    background-color: #023047;
+    transform: scale(0.99);
+  }
+
+  @media only screen and (min-width: 600px) {
+    width: 120px;
+>>>>>>> feature/movimentaçãoDinamica
   }
 `;
 

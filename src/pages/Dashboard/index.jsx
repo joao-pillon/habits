@@ -1,26 +1,44 @@
-import { Container, Header, Section } from "./styles";
+import { HeaderContainer, Button, Container, Profile, Section } from "./styles";
+import Header from "../../components/header";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillPlusCircleFill, BsSearch } from "react-icons/bs";
 import { useState } from "react";
 import HabitsCard from "../../components/habits";
+
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const [optionsView, setOptionsView] = useState(false);
-
+  
   const history = useHistory();
+
+  useEffect(() => {
+    const token = localStorage.getItem("@userToken");
+    if (!token) {
+      history.push("/");
+    }
+  });
+
+  function handleClick() {
+    localStorage.removeItem("@userToken");
+    history.push("/");
+  }
 
   return (
     <Container>
-      <Header>
+      <HeaderContainer>
+        <Header />
+        <Button onClick={() => handleClick()}>Sair</Button>
+      </HeaderContainer>
+
+      <Profile>
         <div>
           <FaUserCircle />
           <h1>Name</h1>
         </div>
-        <section>
-          <BsSearch onClick={() => history.push("/")} />
-        </section>
-      </Header>
+
+      </Profile>
       <HabitsCard />
 
       <Section>

@@ -52,11 +52,11 @@ export const HabitsProvider = ({ children }) => {
 
     const habitsUpdate = (datas) => {
         const token = localStorage.getItem("@userToken");
-
+        
         if(token){
             toast.loading("Espere...");
 
-            api.patch(`/habits/${ datas.id }`, datas, {
+            api.patch(`/habits/${ datas.id }/`, datas, {
                 headers: {
                     Authorization:`Bearer ${ token }`
                 }
@@ -73,7 +73,7 @@ export const HabitsProvider = ({ children }) => {
             })
             .catch(error => {
                 toast.remove();
-
+                
                 if(error.response.data.code){
                     toast.error("Você não tem permissão para editar esse habito");
                     localStorage.removeItem("@userToken");

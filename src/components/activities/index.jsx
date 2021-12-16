@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useActivites } from "../../providers/activities";
+import { useActivities } from "../../providers/activities";
 import { useParams } from "react-router-dom";
 
 const ActivitiesCard = () => {
   const [activitiesList, setActivities] = useState([]);
-  const { ActivitieDelete, getActivities, activities } = useActivites();
+  const { ActivitieDelete, getActivities, activities } = useActivities();
   const { id } = useParams();
 
   useEffect(() => {

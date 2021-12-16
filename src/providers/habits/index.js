@@ -44,7 +44,7 @@ export const HabitsProvider = ({ children }) => {
             });
         }
         else {
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setHabits([]);
             history.push("/login");
         }
@@ -86,7 +86,7 @@ export const HabitsProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setHabits([]);
             history.push("/login");
         }
@@ -124,7 +124,7 @@ export const HabitsProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setHabits([]);
             history.push("/login");
         }
@@ -143,13 +143,13 @@ export const HabitsProvider = ({ children }) => {
                 setHabits(response.data);
             })
             .catch(error => {
-                toast.arguments("Faça login para continuar");
+                toast.error("Faça login para continuar");
                 history.push("/login");
                 console.log(error);
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setHabits([]);
             history.push("/login");
         }

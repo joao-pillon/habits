@@ -82,7 +82,7 @@ export const GroupsProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     setGroups([]);
                     setSubGroups([]);
@@ -94,7 +94,7 @@ export const GroupsProvider = ({ children }) => {
             });
         }
         else {
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setGroups([]);
             setSubGroups([]);
             history.push("/login");
@@ -116,7 +116,7 @@ export const GroupsProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     setGroups([]);
                     setSubGroups([]);
@@ -131,7 +131,7 @@ export const GroupsProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setGroups([]);
             setSubGroups([]);
             history.push("/login");
@@ -154,7 +154,7 @@ export const GroupsProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     setGroups([]);
                     setSubGroups([]);
@@ -169,7 +169,7 @@ export const GroupsProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setGroups([]);
             setSubGroups([]);
             history.push("/login");
@@ -195,7 +195,7 @@ export const GroupsProvider = ({ children }) => {
                 toast.remove();
 
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     setGroups([]);
                     setSubGroups([]);
@@ -207,7 +207,7 @@ export const GroupsProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setGroups([]);
             setSubGroups([]);
             history.push("/login");
@@ -239,14 +239,14 @@ export const GroupsProvider = ({ children }) => {
                 toast.remove();
 
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     setGroups([]);
                     setSubGroups([]);
                     history.push("/login");
                 }
                 else if(error.response.data.message){
-                    toast.arguments("Apenas o criador do grupo pode atualizar o grupo");
+                    toast.error("Apenas o criador do grupo pode atualizar o grupo");
                 }
                 else{
                     toast.error("Erro, tente novamente mais tarde");
@@ -254,7 +254,7 @@ export const GroupsProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             setGroups([]);
             setSubGroups([]);
             history.push("/login");

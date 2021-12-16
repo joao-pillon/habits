@@ -24,9 +24,9 @@ const Home = () => {
 
   useEffect(() => {
     setToken(localStorage.getItem("@userToken"));
-    getGroups(txtCategory, txtSearch);
     getUser();
-  }, [txtCategory, txtSearch]);
+    getGroups(txtCategory, txtSearch);
+  }, [txtCategory, txtSearch, user]);
 
   const onSubscribe = (id) => {
     subscribeGroup(id);
@@ -69,7 +69,7 @@ const Home = () => {
           </Search>
           <Section>
             { groups.map(group => (
-              <CardGroup key={ group.id } idUser={ user.id } group={ group }
+              <CardGroup key={ group.id } user={ user } group={ group }
                 subscribe={ () => onSubscribe(group.id) } 
                 unsubscribe={ () => onUnsubscribe(group.id) } />
             )) }

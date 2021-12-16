@@ -97,8 +97,8 @@ export const UserProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
-            setUser(null)
+            toast.error("Faça login para continuar");
+            setUser(null);
             history.push("/login");
         }
     };
@@ -114,15 +114,13 @@ export const UserProvider = ({ children }) => {
             })
             .catch(() => {
                 localStorage.removeItem("@userToken");
-                toast.arguments("Faça login para continuar");
+                toast.error("Faça login para continuar");
                 setUser(null);
-                history.push("/login");
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
-            setUser(null)
-            history.push("/login");
+            toast.error("Faça login para continuar");
+            setUser(null);
         }
     };
 

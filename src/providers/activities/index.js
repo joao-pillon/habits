@@ -26,7 +26,7 @@ export const ActivitiesProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     history.push("/login");
                 }
@@ -39,7 +39,7 @@ export const ActivitiesProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             history.push("/login");
         }
     };
@@ -59,7 +59,7 @@ export const ActivitiesProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     history.push("/login");
                 }
@@ -75,7 +75,7 @@ export const ActivitiesProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             history.push("/login");
         }
     };
@@ -95,7 +95,7 @@ export const ActivitiesProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     history.push("/login");
                 }
@@ -111,7 +111,7 @@ export const ActivitiesProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             history.push("/login");
         }
     };
@@ -130,7 +130,7 @@ export const ActivitiesProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     history.push("/login");
                 }
@@ -143,7 +143,7 @@ export const ActivitiesProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             history.push("/login");
         }
     };
@@ -162,7 +162,7 @@ export const ActivitiesProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     history.push("/login");
                 }
@@ -175,7 +175,7 @@ export const ActivitiesProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             history.push("/login");
         }
     };
@@ -194,7 +194,7 @@ export const ActivitiesProvider = ({ children }) => {
             })
             .catch(error => {
                 if(error.response.data.code){
-                    toast.arguments("Faça login para continuar");
+                    toast.error("Faça login para continuar");
                     localStorage.removeItem("@userToken");
                     history.push("/login");
                 }
@@ -207,7 +207,7 @@ export const ActivitiesProvider = ({ children }) => {
             });
         }
         else{
-            toast.arguments("Faça login para continuar");
+            toast.error("Faça login para continuar");
             history.push("/login");
         }
     };

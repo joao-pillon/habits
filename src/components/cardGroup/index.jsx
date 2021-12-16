@@ -1,6 +1,6 @@
 import { Card } from "./styles";
 
-const CardGroup = ({ group, idUser, subscribe, unsubscribe }) => {
+const CardGroup = ({ group, user, subscribe, unsubscribe }) => {
     return (
         <Card>
             <h2>{ group.name }</h2>
@@ -8,9 +8,9 @@ const CardGroup = ({ group, idUser, subscribe, unsubscribe }) => {
                 <p>Categoria: { group.category }</p>
                 <span>Descrição: { group.description }</span>
             </div>
-            {(!group.users_on_group.find(user => user.id === idUser))? (
+            {user && ( (user && !group.users_on_group.find(userGroup => userGroup.id === user.id))? (
                 <button onClick={ subscribe }>inscrever-se</button>
-            ): <button onClick={ unsubscribe } className="button--unsub">desinscrever-se</button>}
+            ): <button onClick={ unsubscribe } className="button--unsub">desinscrever-se</button> )}
         </Card>
     );
 };

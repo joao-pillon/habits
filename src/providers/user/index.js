@@ -184,7 +184,7 @@ export const UserProvider = ({ children }) => {
         getUser,
         getUsers,
         getUserId,
-        nextPage: nextUsers,
+        nextUsers,
         previousPage: previousUsers,
       }}
     >

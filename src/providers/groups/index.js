@@ -8,7 +8,7 @@ import api from "../../services/api";
 const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
-    const [ group, setGroup ] = useState(null)
+    const [ group, setGroup ] = useState(null);
     const [ groups, setGroups ] = useState([]);
     const [ subGroups, setSubGroups ] = useState([]);
     const [ page, setPage ] = useState(1);
@@ -32,6 +32,7 @@ export const GroupsProvider = ({ children }) => {
         })
         .catch(error => {
             console.log(error);
+            setGroup(null);
         });
     }
 

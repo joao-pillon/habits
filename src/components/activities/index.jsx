@@ -1,18 +1,27 @@
 import { useEffect, useState } from "react";
+import { useActivites } from "../../providers/activities";
+import { useParams } from "react-router-dom";
 
 const ActivitiesCard = () => {
-  const [activities, setActivities] = useState([]);
-  useEffect(() => {});
-  function achiever() {}
+  const [activitiesList, setActivities] = useState([]);
+  const { ActivitieDelete, getActivities, activities } = useActivites();
+  const { id } = useParams();
+
+  useEffect(() => {
+    getActivities(id);
+    setActivities(activities);
+  }, []);
 
   return (
     <>
-      {activities.map((act, index) => {
+      {activitiesList.map((act) => {
         return (
-          <div key={index}>
+          <div key={act.id}>
             <p>{act.title}</p>
             <p>{act.realization_time}</p>
-            <button onClick={() => achiever}>Atividade completa</button>
+            <button onClick={ActivitieDelete(act.id)}>
+              Atividade completa
+            </button>
           </div>
         );
       })}

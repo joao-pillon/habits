@@ -13,6 +13,9 @@ import { useHistory } from "react-router-dom";
 
 import { Div } from "./styles";
 
+import { HeaderContainer, Button1 } from "../Dashboard/styles";
+import Header from "../../components/header";
+
 const Group_Id = () => {
   const history = useHistory();
   const [token, setToken] = useState(null);
@@ -29,12 +32,21 @@ const Group_Id = () => {
 
   return (
     <>
+              <HeaderContainer>
+            <Header />
+            <Button1  onClick={() => history.push("/group")}>Voltar</Button1>
+             
+          </HeaderContainer>
       {group && (
-        <Container>
-          <GoalsCard />
-          <ActivitiesCard />
-          <Users users={group.users_on_group} />
-        </Container>
+
+
+          
+          <Container>
+            <GoalsCard />
+            <ActivitiesCard />
+            <Users users={group.users_on_group} />
+          </Container>
+
       )}
     </>
   );

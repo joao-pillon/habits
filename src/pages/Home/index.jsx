@@ -13,7 +13,12 @@ import {
   AiOutlineHome,
 } from "react-icons/ai";
 
-import { Div, Search, Input, Section } from "./styles";
+import { Div, Search, Input, Section, ButtonDashboard } from "./styles";
+
+import { HeaderContainer, Button1 } from "../Dashboard/styles";
+import Header from "../../components/header"
+
+
 
 const Home = () => {
   const history = useHistory();
@@ -67,9 +72,16 @@ const Home = () => {
         </Container>
       )}
       {token && (
+        
         <>
+                  <HeaderContainer>
+        <Header />
+        <ButtonDashboard> 
+          <AiOutlineHome onClick={() => history.push("/dashboard")} />
+        </ButtonDashboard>
+      </HeaderContainer>
           <Search>
-            <AiOutlineHome onClick={() => history.push("/dashboard")} />
+            
             <Input
               placeholder="Pesquisar por categoria"
               value={txtCategory}
@@ -86,6 +98,7 @@ const Home = () => {
             />
           </Search>
           <Section>
+
             {groups.map((group) => (
               <CardGroup
                 key={group.id}

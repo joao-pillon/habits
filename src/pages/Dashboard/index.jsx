@@ -1,4 +1,4 @@
-import { HeaderContainer, Button, Button2, Container, Profile, Section } from "./styles";
+import { HeaderContainer, Button1, Button2, Button3, Container, Profile, Section} from "./styles";
 import Header from "../../components/header";
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillPlusCircleFill, BsSearch } from "react-icons/bs";
@@ -7,6 +7,7 @@ import HabitsCard from "../../components/habits";
 
 import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import DashboardImg from "../../assets/Newhome.png"
 
 const Dashboard = () => {
   const [optionsView, setOptionsView] = useState(false);
@@ -29,8 +30,9 @@ const Dashboard = () => {
     <Container>
       <HeaderContainer>
         <Header />
-        <Button onClick={() => handleClick()}>Sair</Button>
+        <Button1 onClick={() => handleClick()}>Sair</Button1>
         <Button2 onClick={() => history.push("/")}>Grupos</Button2>
+        <Button3 onClick={() => history.push("/group")}>Inscrições</Button3>
       </HeaderContainer>
 
       <Profile>
@@ -41,7 +43,7 @@ const Dashboard = () => {
 
       </Profile>
       <HabitsCard />
-
+      <img src={DashboardImg} alt="Background" />
       <Section>
         <BsFillPlusCircleFill onClick={() => setOptionsView(!optionsView)} />
         {optionsView && (

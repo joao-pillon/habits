@@ -1,9 +1,13 @@
 import Button from "../../components/button";
-import Container from "../../components/container";
 import HomeImg from "../../assets/Newhome.png";
 import { useGroups } from "../../providers/groups";
 import CardGroup from "../../components/cardGroup";
 import GroupsCard from "../../components/groups";
+import Header from "../../components/header";
+import { HeaderContainer } from "../Dashboard/styles";
+
+import { AiOutlineHome } from "react-icons/ai";
+import { ButtonDashboard } from "../Home/styles";
 
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -23,9 +27,14 @@ const Group = () => {
 
   return (
     <>
-      <Container>
+      <HeaderContainer>
+        <Header />
+        <ButtonDashboard>
+          <AiOutlineHome onClick={() => history.push("/dashboard")} />
+        </ButtonDashboard>
+      </HeaderContainer>
+
         <GroupsCard />
-      </Container>
     </>
   );
 };

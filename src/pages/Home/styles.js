@@ -102,3 +102,31 @@ export const Input = styled.input`
     color: gray;
   }
 `;
+
+
+export const ButtonDashboard = styled.button`
+font-size:25px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #219ebc;
+  background-color: #219ebc;
+  position: absolute;
+  top: 0%;
+  right:1%;
+
+  :hover {
+    transition: 0.5s;
+    border: 1px solid #023047;
+    background-color: #023047;
+    transform: scale(0.99);
+  }
+
+  @media only screen and (min-width: 768px) {
+    right:4%;
+  }
+`;

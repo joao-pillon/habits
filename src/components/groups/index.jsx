@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGroups } from "../../providers/groups";
+import { Groups, Group, Header } from "./styles";
+import DashboardImg from "../../assets/Newhome.png";
 
 const GroupsCard = () => {
   const { getSubGroups, subGroups, unsubscribeGroup } = useGroups();
@@ -10,26 +12,36 @@ const GroupsCard = () => {
   }, []);
 
   return (
-    <div>
+
+    <>
+    <Header>
+      <h1>Minhas inscrições</h1>
+        <img src={DashboardImg} alt="Background" />
+        </Header>
+       
+    <Groups>
+
+
       {subGroups.map((group) => {
         return (
           <>
-            <div>
+            <Group>
               <Link key={group.id} to={`/group/${group.id}`}>
-                <p>Nome:{group.name}</p>
+                <h1>Nome: {group.name}</h1>
               </Link>
-              <p>Descrição:{group.description}</p>
-              <p>Gênero:{group.category}</p>
-              <p>Criador:{group.creator.username}</p>
-              <p>Usuários:{[group.users_on_group].length}</p>
+              <p>Descrição: {group.description}</p>
+              <p>Gênero: {group.category}</p>
+              <p>Criador: {group.creator.username}</p>
+              <p>Usuários: {[group.users_on_group].length}</p>
               <button onClick={() => unsubscribeGroup(group.id)}>
                 Sair do grupo
               </button>
-            </div>
+            </Group>
           </>
         );
       })}
-    </div>
+    </Groups>
+    </>
   );
 };
 

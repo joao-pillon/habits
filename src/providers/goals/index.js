@@ -22,6 +22,7 @@ export const GoalsProvider = ({ children }) => {
                 }
             })
             .then(response => {
+                console.log(response.data.results);
                 setGoals(response.data.results);
             })
             .catch(error => {

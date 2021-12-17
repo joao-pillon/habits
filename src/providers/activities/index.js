@@ -22,6 +22,7 @@ export const ActivitiesProvider = ({ children }) => {
                 }
             })
             .then(response => {
+                console.log(response.data.results);
                 setActivities(response.data.results);
             })
             .catch(error => {
@@ -64,13 +65,10 @@ export const ActivitiesProvider = ({ children }) => {
                     history.push("/login");
                 }
                 else if(error.response.data.group){
-                    toast.error("Esse grupo não existe");
                 }
                 else if(error.response.data.detail){
-                    toast.error("A paǵina já está no final");
                 }
                 else{
-                    toast.error("Erro, tente novamente mais tarde");
                 }
             });
         }
@@ -100,13 +98,10 @@ export const ActivitiesProvider = ({ children }) => {
                     history.push("/login");
                 }
                 else if(error.response.data.group){
-                    toast.error("Esse grupo não existe");
                 }
                 else if(error.response.data.detail){
-                    toast.error("A paǵina já está no início");
                 }
                 else{
-                    toast.error("Erro, tente novamente mais tarde");
                 }
             });
         }

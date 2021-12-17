@@ -24,6 +24,7 @@ export const Card = styled.div`
   background-color: #ffb703;
   position: relative;
   animation: ${appearFrom} 1s;
+  overflow: hidden;
 
   h2 {
     font-size: 20px;
